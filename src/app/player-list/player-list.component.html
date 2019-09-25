@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <h3 class="p-3" style="text-align: center;">Lista de los jugadores de la NBA</h3>
+    <div class="input-group input-group-sm mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Búsqueda</span>
+      </div>
+      <input type="text" [(ngModel)]="searchPlayer" class="form-control" placeholder="por equipo... " aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+    </div>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nombres</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Equipo</th>
+          <th scope="col">Ciudad</th>
+          <th scope="col">posición</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of playersData  | playerFilter:searchPlayer">
+          <th scope="row"> {{player.id}} </th>
+          <td><a routerLink="/player-detail/{{player.id}}"> {{player.last_name}} </a></td>
+          <td> {{player.first_name}} </td>
+          <td> {{player.team.full_name}} </td>
+          <td> {{player.team.city}} </td>
+          <td> {{player.position}} </td>    
+        </tr>
+      </tbody>
+    </table>
+    <!--PAGINATION-->
+    <hr>
+    <nav aria-label="...">
+        <ul *ngIf="current_page" class="pagination justify-content-center p-6">
+            <li [ngClass]="{disabled:current_page === 1}" class="page-item first-item">
+                <a routerLink [queryParams]="{ page: 1 }" class="page-link">First</a>
+            </li>
+            <li [ngClass]="{disabled:current_page === 1}" class="page-item previous-item">
+                <a routerLink [queryParams]="{ page: current_page - 1 }" class="page-link">Previous</a>
+            </li>
+            <li [ngClass]="{disabled:current_page === per_page}" class="page-item next-item">
+                <a routerLink [queryParams]="{ page: current_page + 1 }" class="page-link">Next</a>
+            </li>
+            <li [ngClass]="{disabled:current_page === per_page}" class="page-item last-item">
+                <a routerLink [queryParams]="{ page: per_page }" class="page-link">Last</a>
+            </li>
+        </ul>
+      </nav>
+  </div>
+</div>

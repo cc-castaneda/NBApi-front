@@ -1,0 +1,47 @@
+<div class="container" *ngIf="data as player">
+  <h3 class="p-3 " style="text-align: center;">Detalle del deportista</h3>
+  <div class="card">
+      <div class="card-header">
+        <div style="display: inline-flex; width: 100%;">
+        <h3>{{data.first_name}} {{data.last_name}} de los <b>{{data.team.full_name}}</b></h3>
+        <a routerLink="/player-detail/edit/{{data.id}}" class="btn btn-primary" role="button"  style="margin: auto;">Editar Perfil</a>
+        
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>ID:</b> {{player.id}} </li>
+              <li class="list-group-item">
+                <div *ngIf="player.height_feet as value;  else elseBlock"><b>Altura: </b>{{value}} pies</div>
+                <ng-template #elseBlock>No hay datos.</ng-template>
+              </li>
+              <li class="list-group-item">
+                <div *ngIf="player.height_inches as value2; else elseBlockInches"><b>Altura: </b>{{value2}} pulgadas</div>
+                <ng-template #elseBlockInches>No hay datos.</ng-template>
+              </li>
+              <li class="list-group-item"><b>Posición de juego: </b>{{player.position}} </li>        
+              <li class="list-group-item"><b>Peso: </b>{{player.weight_pounds}}  libras</li>
+            </ul>
+          </div>
+        
+        
+          <div class="col-sm">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <b>ID del equipo: </b>{{player.team.id}}
+              </li>
+              <li class="list-group-item"><b>Abreviación: </b>{{player.team.abbreviation}}</li>
+              <li class="list-group-item"><b>Conferencia: </b>{{player.team.conference}}</li>
+              <li class="list-group-item"><b>División: </b>{{player.team.division}}</li>
+              <li class="list-group-item"><b>Nombre completo:</b>{{player.team.full_name}}</li>
+              <li class="list-group-item"><b>Nombre: </b>{{player.team.name}}</li>
+            </ul>
+          </div>
+        </div>
+      </div> 
+    </div>
+</div>
+
+

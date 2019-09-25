@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row p-3">
+    <div  class="col">
+      <h3>La edición de información básica del deportista y su equipo será por LocalStorage</h3><br>
+    <div class="card" >
+      <div class="card-body">
+        <form (submit)="updateInfoPlayer(updateFirstName, updateLastName, updateHeightFeet, updateHeightInches, updatePosition)">
+            <br><span>Información básica:</span><br>
+          <div class="form-group">
+              <input [(ngModel)]="data.first_name"  id="{{data.first_name}}" name="{{data.first_name}}" type="text" class="form-control" #updateFirstName>
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="data.last_name"  id="{{data.last_name}}" [ngModelOptions]="{standalone: true}" type="text" class="form-control" #updateLastName>
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="data.height_feet"  id="{{data.height_feet}}" [ngModelOptions]="{standalone: true}"  type="text" class="form-control" #updateHeightFeet>
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="data.height_inches"  id="{{data.height_inches}}" [ngModelOptions]="{standalone: true}" type="text" class="form-control" #updateHeightInches>
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="data.position"  id="{{data.position}}" [ngModelOptions]="{standalone: true}"   type="text" class="form-control" #updatePosition>
+          </div>
+          <br><span>Información del equipo:</span><br>
+          <div class="form-group">
+              <input [(ngModel)]="data.team.abbreviation"  id="{{data.position}}" [ngModelOptions]="{standalone: true}"   type="text" class="form-control" #updateAbbreviation>
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="data.team.city"  id="{{data.position}}" [ngModelOptions]="{standalone: true}"   type="text" class="form-control" #updateCity>
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="data.team.conference"  id="{{data.position}}" [ngModelOptions]="{standalone: true}"   type="text" class="form-control" #updateConference>
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="data.team.division"  id="{{data.position}}" [ngModelOptions]="{standalone: true}"   type="text" class="form-control" #updateDivision>
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="data.team.full_name"  id="{{data.position}}" [ngModelOptions]="{standalone: true}"   type="text" class="form-control" #updateFullName>
+          </div>
+          <div class="form-group">
+              <input [(ngModel)]="data.team.name"  id="{{data.position}}" [ngModelOptions]="{standalone: true}"   type="text" class="form-control" #updateName>
+          </div>
+          
+          <button class="btn btn-primary ">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
